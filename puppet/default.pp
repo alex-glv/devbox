@@ -1,8 +1,9 @@
 class initial {
   package {"git":
-    ensure => "installed"
+    ensure => "installed",
   }
 }
 
 include initial
-include devbox
+include docker
+include python
