@@ -8,12 +8,4 @@ class user {
     group => vagrant,
     source => "puppet:///modules/user/.zshrc",
   }
-  file { "/home/vagrant/.ssh/id_rsa":
-    source => "puppet:///modules/user/id_rsa",
-    mode => 600,
-  }
-  file { "/home/vagrant/.ssh/id_rsa.pub":
-    source => "puppet:///modules/user/id_rsa.pub",
-    mode => 600,
-  }
 }
