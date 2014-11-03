@@ -5,6 +5,12 @@ class initial {
   package {"zsh":
     ensure => "installed",
   }
+  package {"nginx":
+    ensure => "installed"
+  }
+  file {"/home/vagrant/sites":
+    ensure => "directory"
+  }
 }
 
 include initial
