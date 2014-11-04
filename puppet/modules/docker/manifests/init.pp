@@ -22,8 +22,4 @@ class docker {
   package {"apt-transport-https":
     ensure => "installed"
   }
-  exec {"apt-get update":
-    command => "apt-get -y update",
-    path => "/bin:/usr/bin:/sbin"
-  }
 }
