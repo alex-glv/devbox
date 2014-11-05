@@ -1,25 +1,48 @@
 class initial {
+  file {"/home/vagrant/sites":
+    ensure => "directory"
+  }
   package {"git":
     ensure => "installed",
   }
   package {"zsh":
     ensure => "installed",
   }
-  file {"/home/vagrant/sites":
-    ensure => "directory"
+  package {"mercurial":
+    ensure => "installed"
   }
-  exec {"add-go-repository":
-    command => "add-apt-repository ppa:duh/golang",
-    path => "/usr/sbin:/usr/bin",
-    before => Package["golang"]
+  package {"make":
+    ensure => "installed"
+  }
+  package {"binutils":
+    ensure => "installed"
+  }
+  package {"bison":
+    ensure => "installed"
+  }
+  package {"gcc":
+    ensure => "installed"
+  }
+  package {"build-essential":
+    ensure => "installed"
+  }
+  package {"curl":
+    ensure => "installed",
+  }
+  package {"redis-server":
+    ensure => "installed"
   }
   exec {"apt-get update":
     command => "apt-get -y update",
     path => "/bin:/usr/bin:/sbin"
   }
-  package {"golang":
-    ensure => "installed",
-    require => Exec["apt-get update"]
+  exec {"golang":
+    command => "curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | zsh",
+    cwd => "/home/vagrant",
+    user => "vagrant",
+    path => "/usr/bin:/bin",
+    require => [Package["zsh"], Package["curl"], Package["git"]],
+    returns => [0,1]
   }
 }
 
