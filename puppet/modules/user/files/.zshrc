@@ -22,3 +22,4 @@ source /home/vagrant/.gvm/scripts/gvm
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/local/bin/virtualenvwrapper.sh
+export PATH=$PATH:/home/vagrant/bin
