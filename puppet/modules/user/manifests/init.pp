@@ -9,4 +9,19 @@ class user {
     group => vagrant,
     source => "puppet:///modules/user/.zshrc",
   }
+  file { "/home/vagrant/bin":
+    ensure => "directory"
+  }
+
+  file {"/home/vagrant/bin/lein":
+    ensure => "file",
+    source => "/tmp/misc/lein",
+    require => [File["/home/vagrant/bin"]],
+    owner => "vagrant",
+    group => "vagrant",
+    mode => 755
+    } ->
+    exec {"run-lein":
+      command => "/home/vagrant/bin/lein",
+    }
 }

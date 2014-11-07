@@ -26,6 +26,10 @@ class initial {
   package {"build-essential":
     ensure => "installed"
   }
+  exec {"build-dep-emacs":
+    command => "apt-get build-dep emacs24",
+    path => "/bin:/usr/bin:/sbin"
+  }
   package {"curl":
     ensure => "installed",
   }
@@ -43,7 +47,12 @@ class initial {
     path => "/usr/bin:/bin",
     require => [Package["zsh"], Package["curl"], Package["git"]],
     returns => [0,1]
-  }
+    } ->
+    file { "/bin/gvm":
+      ensure => "symlink",
+      target => "/home/vagrant/.gvm/gvm"
+    }
+  
 }
 
 include initial
