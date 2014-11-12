@@ -23,5 +23,6 @@ class user {
     } ->
     exec {"run-lein":
       command => "/home/vagrant/bin/lein",
+      require => Package["default-jre"],
     }
 }

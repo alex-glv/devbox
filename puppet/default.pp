@@ -36,6 +36,9 @@ class initial {
   package {"redis-server":
     ensure => "installed"
   }
+  package {"default-jre":
+    ensure => "installed"
+  }
   exec {"apt-get update":
     command => "apt-get -y update",
     path => "/bin:/usr/bin:/sbin"
