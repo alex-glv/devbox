@@ -26,10 +26,10 @@ class initial {
   package {"build-essential":
     ensure => "installed"
   }
-  exec {"build-dep-emacs":
-    command => "apt-get build-dep emacs24",
-    path => "/bin:/usr/bin:/sbin"
-  }
+  # exec {"build-dep-emacs":
+  #   command => "apt-get build-dep emacs24",
+  #   path => "/bin:/usr/bin:/sbin"
+  # }
   package {"curl":
     ensure => "installed",
   }
